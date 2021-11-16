@@ -1,4 +1,9 @@
 
+import numpy as np
+import tensorflow as tf
+import tensorflow.keras as keras
+
+
 def vgg16(l2=0, dropout=0):
     '''Convolutionized VGG16 network. 
 
