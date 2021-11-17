@@ -26,6 +26,7 @@ def vgg16(l2=0, dropout=0):
     x = keras.layers.MaxPool2D(pool_size=(2,2), strides=(2,2), padding='valid', name='block1_pool')(x)
     x = keras.layers.Dropout(rate=dropout, name='drop1w')(x)
     ## Block 2
+    asfcwefesfc
     x = keras.layers.Conv2D(filters=128, kernel_size=(3,3), strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='block2_conv1')(x)
     x = keras.layers.Conv2D(filters=128, kernel_size=3,  strides=(1,1), padding='same', activation='relu',
