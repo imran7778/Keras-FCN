@@ -135,4 +135,19 @@ class MyMeanIoU(keras.metrics.MeanIoU):
             weights=sample_weight,
             dtype=self._dtype)
         return self.total_cm.assign_add(current_cm[1:, 1:]) # remove boundary
-
+    
+    
+def crossentropy(y_true, y_pred_onehot):
+    '''Custom cross-entropy to handle borders (class = -1).'''
+    n_valid = tf.math.reduce_sum(tf.cast(y_true != 255, tf.float32))
+    y_true_onehot = tf.cast(np.arange(21) == y_true, tf.float32)
+    return tf.reduce_sum(-y_true_onehot * tf.math.log(y_pred_onehot + 1e-7)) / n_valid
+    
+    
+    
+def pixelacc(y_true, y_pred_onehot):
+    '''Custom pixel accuracy to handle borders (class = -1).'''
+    n_valid = tf.math.reduce_sum(tf.cast(y_true != 255, tf.float32))
+    y_true = tf.cast(y_true, tf.int32)[..., 0]
+    y_pred = tf.argmax(y_pred_onehot, axis=-1, output_type=tf.int32)
+    return tf.reduce_sum(tf.cast(y_true == y_pred, tf.float32)) / n_valid
