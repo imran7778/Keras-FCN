@@ -90,7 +90,7 @@ def fcn32(vgg16, l2=0):
                                      kernel_initializer=BilinearInitializer(),
                                      kernel_regularizer=keras.regularizers.L2(l2=l2),
                                      name='fcn32')(x)
-    return keras.Model(vgg16.input, x)
+    return keras.Model(vgg16.input, x, name='FCN-32')
 
 
 
