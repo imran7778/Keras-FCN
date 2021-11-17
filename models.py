@@ -95,7 +95,6 @@ def fcn32(vgg16, l2=0):
 
 
 
-
 class BilinearInitializer(keras.initializers.Initializer):
     '''Initializer for Conv2DTranspose to perform bilinear interpolation on each channel.'''
     def __call__(self, shape, dtype=None, **kwargs):
@@ -116,7 +115,7 @@ class BilinearInitializer(keras.initializers.Initializer):
     
     
     
-    class MyMeanIoU(keras.metrics.MeanIoU):
+class MyMeanIoU(keras.metrics.MeanIoU):
     '''Custom meanIoU to handle borders (class = -1).'''
     def update_state(self, y_true, y_pred_onehot, sample_weight=None):
         y_pred = tf.argmax(y_pred_onehot, axis=-1)
