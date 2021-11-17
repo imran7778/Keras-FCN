@@ -15,9 +15,9 @@ def vgg16(l2=0, dropout=0):
       (keras Model)
     '''
     ## Input
-    input_layer = keras.Input(shape=(128, 128, 1), name='input')
+    input_layer = keras.Input(shape=(128, 128, 3), name='input')
     ## Preprocessing
-    #x = keras.layers.Lambda(tf.keras.applications.vgg16.preprocess_input, name='preprocessing')(input_layer)
+    x = keras.layers.Lambda(tf.keras.applications.vgg16.preprocess_input, name='preprocessing')(input_layer)
     ## Block 1
     x = keras.layers.Conv2D(filters=64, kernel_size=(3,3), strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='block1_conv1')(input_layer)
