@@ -85,7 +85,7 @@ def fcn32(vgg16, l2=0):
     '''
     x = keras.layers.Conv2D(filters=1, kernel_size=(1,1), strides=(1,1), padding='same', activation='linear',
                             kernel_regularizer=keras.regularizers.L2(l2=l2),
-                            name='score7')(vgg16.get_layer('drop7').output)
+                            name='score7')(vgg16.get_layer('conv7').output)
     x = keras.layers.Conv2DTranspose(filters=1, kernel_size=(64,64), strides=(32,32),
                                      padding='same', use_bias=False, activation='sigmoid',
                                      kernel_initializer=BilinearInitializer(),
