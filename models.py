@@ -32,7 +32,7 @@ def vgg16(l2=0, dropout=0):
     x = keras.layers.Conv2D(filters=128, kernel_size=3,  strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='block2_conv2')(x)
     x = keras.layers.MaxPool2D(pool_size=(2,2), strides=(2,2), padding='valid', name='block2_pool')(x)
-    x = keras.layers.Dropout(rate=dropout, name='drop2w')(x)
+    #x = keras.layers.Dropout(rate=dropout, name='drop2w')(x)
     ## Block 3
     x = keras.layers.Conv2D(filters=256, kernel_size=(3,3), strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='block3_conv1')(x)
@@ -41,7 +41,7 @@ def vgg16(l2=0, dropout=0):
     x = keras.layers.Conv2D(filters=256, kernel_size=(3,3), strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='block3_conv3')(x)
     x = keras.layers.MaxPool2D(pool_size=(2,2), strides=(2,2), padding='valid', name='block3_pool')(x)
-    x = keras.layers.Dropout(rate=dropout, name='drop3w')(x)
+    #x = keras.layers.Dropout(rate=dropout, name='drop3w')(x)
     ## Block 4
     x = keras.layers.Conv2D(filters=512, kernel_size=(3,3), strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='block4_conv1')(x)
@@ -50,7 +50,7 @@ def vgg16(l2=0, dropout=0):
     x = keras.layers.Conv2D(filters=512, kernel_size=(3,3), strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='block4_conv3')(x)
     x = keras.layers.MaxPool2D(pool_size=(2,2), strides=(2,2), padding='valid', name='block4_pool')(x)
-    x = keras.layers.Dropout(rate=dropout, name='drop4w')(x)
+    #x = keras.layers.Dropout(rate=dropout, name='drop4w')(x)
     ## Block 5
     x = keras.layers.Conv2D(filters=512, kernel_size=(3,3), strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='block5_conv1')(x)
@@ -59,7 +59,7 @@ def vgg16(l2=0, dropout=0):
     x = keras.layers.Conv2D(filters=512, kernel_size=(3,3), strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='block5_conv3')(x)
     x = keras.layers.MaxPool2D(pool_size=(2,2), strides=(2,2), padding='valid', name='block5_pool')(x)
-    x = keras.layers.Dropout(rate=dropout, name='drop5w')(x)
+    #x = keras.layers.Dropout(rate=dropout, name='drop5w')(x)
     ## Convolutionized fully-connected layers
     x = keras.layers.Conv2D(filters=4096, kernel_size=(7,7), strides=(1,1), padding='same', activation='relu',
                             kernel_regularizer=keras.regularizers.L2(l2=l2), name='conv6')(x)
